@@ -13,7 +13,44 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        addNavigationBar()
+        // addNavigationBar()
+        // addViewEqualtoSuperView()
+        addStackView()
+    }
+    
+    func addStackView() {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .Horizontal
+        stackView.alignment = .Fill
+        stackView.distribution = .FillEqually
+        stackView.spacing = 5
+        let view = UIView()
+        view.backgroundColor = .redColor()
+        let view2 = UIView()
+        view2.backgroundColor = .blueColor()
+        let view3 = UIView()
+        view3.backgroundColor = .greenColor()
+        stackView.addArrangedSubview(view)
+        stackView.addArrangedSubview(view2)
+        stackView.addArrangedSubview(view3)
+        self.view.addSubview(stackView)
+        stackView.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 22.0).active = true
+        stackView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: -22.0).active = true
+        stackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 22.0).active = true
+        stackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -22.0).active = true
+    }
+    
+    func addViewEqualtoSuperView() {
+        let childView = UIView()
+        childView.backgroundColor = .blackColor()
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(childView)
+        
+        childView.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 20.0).active = true
+        childView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant: 20.0).active = true
+        childView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 20.0).active = true
+        childView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: 20.0).active = true
     }
     
     func addNavigationBar() {
